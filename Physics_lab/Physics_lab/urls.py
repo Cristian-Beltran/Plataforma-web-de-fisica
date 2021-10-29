@@ -12,4 +12,6 @@ from users import views as users_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',local_views.index),
+    path('users/login/',users_views.login_view,name='login')
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

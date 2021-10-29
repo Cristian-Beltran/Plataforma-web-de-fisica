@@ -1,0 +1,25 @@
+:root{
+    --blue-color: #383F9A;
+    --violet-color: #7A74A7;
+    --white:#FFFFFF;
+    --white-light: #F2ECFF;
+    --green-color: #00C897; 
+}
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+header{
+    background-color: var(--blue-color);
+}
+.logo{
+    width:10rem;
+
+}

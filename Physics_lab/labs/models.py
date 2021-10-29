@@ -28,10 +28,12 @@ class Lab(models.Model):
         return self.title
 
 class NoteLab(models.Model):
+    """Note lab model"""
     student = models.ForeignKey(Student,on_delete=models.CASCADE)
     lab = models.ForeignKey(Lab,on_delete=models.CASCADE)
 
     contain = models.TextField()
 
+    send = models.BooleanField()
     created_at = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)

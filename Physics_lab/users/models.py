@@ -21,7 +21,7 @@ class School(models.Model):
 class Student(models.Model):
     """Student model"""
     user = models.OneToOneField(User,on_delete=models.CASCADE)
-    school = models.ForeignKey(School,on_delete=models.CASCADE)
+    school = models.ForeignKey(School,on_delete=models.CASCADE,blank=True,null=True)
     picture = models.ImageField(upload_to='users/picture/',blank=True,null=True)
 
     def __str__(self):

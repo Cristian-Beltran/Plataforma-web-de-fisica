@@ -1,3 +1,8 @@
-from django.shortcuts import render
+"""Users views"""
 
-# Create your views here.
+# Django
+from django.shortcuts import render
+from django.contrib.auth import authenticate,login
+
+
+
