@@ -2,24 +2,32 @@
 
 <div class="logo__contain">
     <img src="{% static 'img/logo.png' %}" alt="logo Physics lab" class="logo">
-    <h1>Physics Lab</h1>
+    <div>Physics Lab</div>
 </div>
 <nav>
     <ul>
         <li><a href="">Home</a></li>
 
         <li><a href="">Posts</a></li>
+<!--
         <li><a href="">My Posts</a></li>
-
+-->
         <li><a href="">Labs</a></li>
+<!--
         <li><a href="">My Labs</a></li>
         <li><a href="">Notes Labs</a></li>
-
+-->
         <li><a href="">Simulate</a></li>
-        <li><a href="">Log out</a></li>
-        <li><a href="">Profile</a></li>
-        <li><a href=""><img src="" alt="" class="profile"></a></li>
-        <li><a href="">Log in</a></li>
-        <li><a href="">Sign up</a></li>
+        {% if user.is_auhenticated %}
+            <li><a href="{% url 'logout' %}">Log out</a></li>
+            <li><a href=""><img src="" alt="" class="profile"></a></li>
+        {% else %}
+            <li><a href="{% url 'login' %}" class="nav__login">Log in</a></li>
+            <li><a href="" class="nav__signup">Sign up</a></li>
+        {% endif %}
+
+ <!--       <li><a href="">Profile</a></li>
+-->
+
     </ul>
 </nav>

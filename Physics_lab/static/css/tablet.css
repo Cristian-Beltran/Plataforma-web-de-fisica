@@ -1,0 +1,8 @@
+.form__contain .logo{
+    display:none
+}
+
+header .logo__contain .logo {
+    display:block;
+}
+

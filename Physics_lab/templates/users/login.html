@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_content %}
+    <title>Physics Lab Login</title>
+{% endblock %}
+
+
+{% block container %}
+    <section class="form__contain">
+        <img src="{% static 'img/logo.png' %}" alt="logo Physics lab" class="logo" >
+        <div class="title">Log in</div>
+        <form action="{% url 'login'%}" method="post">
+            {% csrf_token %}
+            <input type="text" class="input" id="username" placeholder="Usuario" name="username">
+            <input type="password" class="input" id=password placeholder="Contraseña" name="password">
+            {% if error %}
+                <p class="message__error">{{error}}</p>
+            {% endif%}
+            <div>
+                <span>¿No tienes cuenta?</span>
+                <a href="">Registrarse</a>
+            </div>
+            <input type="submit" value="Ingresar" class="button__primary">
+        </form>
+    </section>
+{% endblock %}

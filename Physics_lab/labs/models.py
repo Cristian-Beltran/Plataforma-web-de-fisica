@@ -34,6 +34,6 @@ class NoteLab(models.Model):
 
     contain = models.TextField()
 
-    send = models.BooleanField()
+    sent = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
