@@ -6,7 +6,7 @@
 </div>
 <nav>
     <ul>
-        <li><a href="">Home</a></li>
+        <li><a href="{% url 'index' %}">Home</a></li>
 
         <li><a href="">Posts</a></li>
 <!--
@@ -18,16 +18,27 @@
         <li><a href="">Notes Labs</a></li>
 -->
         <li><a href="">Simulate</a></li>
-        {% if user.is_auhenticated %}
+        {% if request.user.is_authenticated %}
             <li><a href="{% url 'logout' %}">Log out</a></li>
-            <li><a href=""><img src="" alt="" class="profile"></a></li>
+            {% if request.user.teacher %}
+                {% if request.user.teacher.picture %} 
+                    <li><a href="{% url 'perfil_teacher' %}"><img src="{{ request.user.teacher.picture.url }}" alt="Foto de perfil"  class="user__logo"></a></li>
+                {% else %} 
+                    <li class="user__logo--sin-picture"><a href="{% url 'perfil_teacher' %}"><img src="{% static 'img/user_logo.png' %}" alt="Foto de perfil" class="user__logo"></a></li>
+                {% endif%}
+            {% else %}
+                {% if request.user.student.picture %}
+                    <li ><a href="{% url 'perfil_student' %}"><img src="{{ request.user.student.picture.url }}" alt="Foto de perfil" class="user__logo"></a></li>
+                {% else %}
+
+                    <li class="user__logo--sin-picture"><a href="{% url 'perfil_student' %}"><img src="{% static 'img/user_logo.png' %}" alt="" ></a></li>
+                {% endif%}
+            {% endif%}
         {% else %}
             <li><a href="{% url 'login' %}" class="nav__login">Log in</a></li>
-            <li><a href="" class="nav__signup">Sign up</a></li>
+            <li><a href="{% url 'signup'%}" class="nav__signup">Sign up</a></li>
         {% endif %}
 
- <!--       <li><a href="">Profile</a></li>
--->
 
     </ul>
 </nav>

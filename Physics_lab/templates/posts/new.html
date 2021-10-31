@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_content %}
+<title>Physics Lab New Post</title>
+{% endblock %}
+
+
+{% block container %}
+<section class="form__contain">
+    <img src="{% static 'img/logo.png' %}" alt="logo Physics lab" class="logo">
+    <div class="title">Post</div>
+    <form action="{% url 'create_post'%}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" name='teacher' id='teacher' value="{{teacher.pk}}">
+        <div class="form__group">
+            <input type="text" class="input {% if form.title.errors %} invalid {% endif%}" placeholder="Titulo"
+                id="title" name="title">
+            <div class="input__invalid">{% for error in form.title.errors %}{{error}}{%endfor%}</div>
+        </div>
+        <div class="form__group">
+            <input type="file" class="input {% if form.photo.errors %} invalid {% endif%}" placeholder="Imagen"
+                id="photo" name="photo">
+            <div class="input__invalid">{% for error in form.photo.errors %}{{error}}{%endfor%}</div>
+        </div>
+        <div class="form__group">
+            <textarea class="input {% if form.contain.errors %} invalid {% endif%}" placeholder="Contenido" id="contain" name="contain"></textarea>
+            <div class="input__invalid">{% for error in form.contain.errors %}{{error}}{%endfor%}</div>
+        </div>
+        <div class="form__group">
+            {{form.groups}}
+            <div class="input__invalid">{% for error in form.groups.errors %}{{error}}{%endfor%}</div>
+        </div>
+        <div class="form__group">
+            <label for="visible" class="label">Visible: </label>
+            <input type="checkbox" class="checkbox {% if form.visible.errors %} invalid {% endif%}"
+                id="visible" name="visible">
+            <div class="input__invalid">{% for error in form.visible.errors %}{{error}}{%endfor%}</div>
+        </div>
+        <div class="form__group">
+            <label for="public" class="label" >Publico: </label>
+            <input type="checkbox" class="checkbox {% if form.public.errors %} invalid {% endif%}"
+                id="public" name="public">
+            <div class="input__invalid">{% for error in form.public.errors %}{{error}}{%endfor%}</div>
+        </div>
+        
+        <input type="submit" value="Publicar" class="button__primary">
+    </form>
+</section>
+{% endblock %}

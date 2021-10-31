@@ -42,6 +42,9 @@ header {
 ul {
     display: flex;
 }
+nav ul{
+    align-items: center;
+}
 
 a {
     text-decoration: none;
@@ -70,7 +73,7 @@ li a {
 }
 
 header .logo__contain .logo {
-    display:none;
+    display: none;
     width: 7rem;
     margin-right: 2rem;
 }
@@ -82,78 +85,199 @@ header .logo__contain .logo {
 .nav__signup {
     color: var(--green-color);
 }
+.user__logo--sin-picture{
+    width: 6rem;
+    height: 6rem;
+    background-color:var(--white);
+    border-radius: 50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.user__logo--sin-picture img{
+    width: 4rem;
+}
+.user__logo{
+    width:6rem;
+    height: 6rem;
+    border-radius: 50%;
+}
 
 
-
+/* Estilos de main */
 main {
     display: grid;
-    width: 100vw;
+    width: 100%;
     height: 80vh;
     place-items: center;
 }
-.form__contain{
-    display:flex;
+
+
+/* Estilos de formularios*/
+.form__contain {
+    padding: 6rem 0;
+    display: flex;
     flex-direction: column;
 }
 
-.title{
-    color:var(--violet-color);
+.title {
+    color: var(--violet-color);
     font-size: var(--lg);
     font-weight: 700;
     margin-bottom: 2rem;
 }
 
-.form__contain form{
+.form__contain form {
     display: flex;
-    flex-direction:column;
-    justify-content:center;
+    flex-direction: column;
+    justify-content: center;
     align-items: start;
 }
-.label{
-    color:var(--black);
-    font-size:var(--md);
+
+.label {
+    color: var(--black);
+    font-size: var(--md);
     font-weight: 500;
     margin-bottom: .4rem;
 }
-.input{
+
+.form__group {
+    margin-bottom: 2.5rem;
+    width: 33rem;
+}
+.form__group ul{
+    display: flex;
+    flex-direction: column;
+    height:10rem;
+    overflow-y:scroll;
+}
+.form__group label input{
+    width:auto;
+}
+.input {
     background-color: var(--white-light);
-    font-size:var(--md);
+    width:100%;
+    font-size: var(--md);
     font-weight: 300;
-    margin-bottom: 2rem;
-    border:none;
+    border: none;
     border-radius: 1rem;
     padding: 1rem 2rem;
 }
-.form__contain form div{
+
+.invalid{
+    border: .1rem solid var(--error);
+}
+.input__invalid {
+    height:1rem;
+    width:32rem;
+    color: var(--error);
+    font-size: var(--sm);
+    font-weight: 300;
+    margin-bottom: .5rem;
+}
+
+
+.form__contain form .message__register {
     align-self: end;
-    font-size:var(--sm);
-    font-weight:300;
-    color:var(--black);
+    font-size: var(--sm);
+    font-weight: 300;
+    color: var(--black);
 }
-.message__error{
-    color:var(--error);
-    font-size:var(--sm);
-    font-weight:500;
-    margin-bottom:.5rem;
+
+
+
+.form__contain form div a {
+    border-top: 2rem;
+    color: var(--green-color)
 }
-.form__contain form div a{
-    border-top:2rem;
-    color:var(--green-color)
-}
-.button__primary{
-    background-color:var(--green-color);
-    width:100%;
-    height:4rem;
-    border:none;
-    border-radius: 1rem;;
-    color:var(--white-light);
-    font-size:var(--md);
+
+.button__primary {
+    background-color: var(--green-color);
+    width: 100%;
+    height: 4rem;
+    border: none;
+    border-radius: 1rem;
+    color: var(--white-light);
+    font-size: var(--md);
     font-weight: 500;
     margin-top: 1rem;
+    cursor: pointer;
 }
+
 .form__contain .logo {
     align-self: center;
     width: 10rem;
     margin-right: 2rem;
 }
 
+
+/*Estilos de home*/
+
+.vision__contain {
+    display: grid;
+    grid-template: repeat(4, auto)/ 1fr;
+    place-items: center;
+    padding: 0 4rem;
+}
+
+.desktop__img {
+    display: none;
+}
+
+.banner {
+    width: 90%;
+}
+
+.vision {
+    text-align: center;
+    font-size: var(--md);
+    font-weight: 500;
+    margin: 4rem 0;
+    padding: 0 6rem;
+}
+
+.cards__contain {
+    display: flex;
+    width: 100%;
+    padding: 4rem 0;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: var(--white-light);
+}
+
+.card {
+    width: 32rem;
+    display: grid;
+    grid-template: repeat(2, 1fr) /repeat(2, 1fr);
+    margin: 2rem;
+}
+
+.card .card__logo {
+    height: 16rem;
+    grid-row: 1 / span 2;
+    grid-column: 1 / span 1
+}
+
+.card .card__title {
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 1;
+    font-size: var(--lg);
+}
+
+.card button {
+    grid-row: 2 / span 1;
+    grid-column: 2 / span 1;
+}
+
+.button__secondary {
+    background-color: var(--white-light);
+    border: .1rem solid var(--green-color);
+    width: 100%;
+    height: 4rem;
+    border-radius: 1rem;
+    color: var(--green-color);
+    font-size: var(--md);
+    font-weight: 500;
+    cursor: pointer;
+}

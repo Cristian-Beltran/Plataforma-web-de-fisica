@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_content %}
+    <title>Physics Lab Sign up</title>
+{% endblock %}
+
+
+{% block container %}
+    <section class="form__contain">
+        <img src="{% static 'img/logo.png' %}" alt="logo Physics lab" class="logo" >
+        <div class="title">Sign up</div>
+        <form action="{% url 'signup'%}" method="post">
+            {% csrf_token %}
+            <div class="form__group">
+                <input type="email" class="input {% if form.email.errors %} invalid {% endif%}" placeholder="email" id="email" name="email">
+                <div class="input__invalid">{% for error in form.email.errors %}{{error}}{%endfor%}</div>
+            </div>
+            <div class="form__group">
+                <input type="text" class="input {% if form.first_name.errors %} invalid {% endif%}" placeholder="Nombre/s" id="first_name" name="first_name">
+                <div class="input__invalid">{% for error in form.first_name.errors %}{{error}}{%endfor%}</div>
+            </div>
+            <div class="form__group">
+                <input type="text" class="input {% if form.last_name.errors %} invalid {% endif%}" placeholder="Apellidos" id="last_name" name="last_name">
+                <div class="input__invalid">{% for error in form.last_name.errors %}{{error}}{%endfor%}</div>
+            </div>
+            <div class="form__group">
+                <input type="text" class="input {% if form.username.errors %} invalid {% endif%}" placeholder="Username" id="username" name="username">
+                <div class="input__invalid">{% for error in form.username.errors %}{{error}}{%endfor%}</div>
+            </div>
+            <div class="form__group">
+                <input type="password" class="input {% if form.password.errors %} invalid {% endif%}" placeholder="Contraseña" id="password" name="password">
+                <div class="input__invalid">{% for error in form.password.errors %}{{error}}{%endfor%}</div>
+            </div>
+            <div class="form__group">
+                <input type="password" class="input {% if form.password_confirm.errors %} invalid {% endif%}" placeholder="Repetir contraseña" id="password_confirm" name="password_confirm">
+                <div class="input__invalid">{% for error in form.password_confirm.errors %}{{error}}{%endfor%}</div>
+            </div>
+            <input type="submit" value="Registrarse" class="button__primary">
+        </form>
+    </section>
+{% endblock %}

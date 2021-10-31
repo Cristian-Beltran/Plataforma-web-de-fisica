@@ -13,6 +13,20 @@ from users import views as users_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',local_views.index,name='index'),
+    
     path('users/login/',users_views.login_view,name='login'),
-    path('users/logout',users_views.logout_view,name='logout'),
+    path('users/logout/',users_views.logout_view,name='logout'),
+    path('users/signup/',users_views.signup_view,name='signup'),
+    path('users/perfil/student/',users_views.perfil_student_view,name='perfil_student'),
+    path('users/perfil/teacher/',users_views.perfil_teacher_view,name='perfil_teacher'),
+    path('users/perfil/student/update/',users_views.update_student_view,name='update_student'),
+    path('users/perfil/teacher/update/',users_views.update_teacher_view,name='update_teacher'),
+
+
+    path('posts/create/',posts_views.create_post_view,name='create_post'),
+    path('posts/update/',posts_views.update_post_view,name='update_post'),
+    path('posts/delete/',posts_views.delete_post_view,name='delete_post'),
+    path('posts/list/',posts_views.list_post_view,name='list_post'),
+
+
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
