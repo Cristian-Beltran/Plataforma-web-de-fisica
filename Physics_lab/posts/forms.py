@@ -13,4 +13,7 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title','photo','contain','visible','public','teacher','groups')
-    
+
+class FilterPostForm(forms.Form):
+    title = forms.CharField()
+    grupo = forms.CharField() 

@@ -6,6 +6,39 @@
 
 
 {% block container %}
+    <section class="list__item">
+        <div class="form__contain">
+            <div class="form__title">POSTS</div>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form__group">
+                    <input type="text" class="input {% if form.title.errors %} invalid {% endif %}" placeholder="Titulo" id="title" name="title">
+                    <div class="input__invalid">{% for error in form.title.errors %}{{error}}{%endfor%}</div>
+                </div>
+                <div class="form__group">
+                    <select name="group" id="group" class="input">
+                        {% for group in groups %}
+                            <option value="{{group.pk}}">{{group.name}}</option>
+                        {% endfor %}
+                        
+                    </select>
+                    <div class="input__invalid">{% for error in form.group.errors %}{{error}}{%endfor%}</div>
+                </div>
+                <input type="submit" value="Buscar" class="button__secondary">
+            </form>
 
+        </div>
+        <div class="cards__contain">
+            {% for post in posts%}
+                <div class="card">
+                    <img src="{{post.photo.url}}" alt="{{post.title}}" class="card__img">
+                    <div class="card__title">{{post.title}}</div>
+                    <div class="card__content">{{post.contain|truncatechars:60}}
+                    <div class="card__teacher">{{post.teacher}}</div>
+                    </div>
+                </div>
+            {% endfor%}
+        </div>
+    </section>
 
 {% endblock %}

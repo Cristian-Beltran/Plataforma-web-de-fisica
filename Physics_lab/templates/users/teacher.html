@@ -8,33 +8,25 @@
 {% block container %}
     <section class="perfil__contain">
         {% if request.user.teacher.picture %}
-            <li ><img src="{{ request.user.teacher.picture.url }}" alt="Foto de perfil" class="user__logo"></li>
+            <img src="{{ request.user.teacher.picture.url }}" alt="Foto de perfil" class="user__logo">
         {% else %}
-            <li class="user__logo--sin-picture"><img src="{% static 'img/user_logo.png' %}" alt="" ></li>
+            <div class="user__logo--sin-picture user__logo"><img src="{% static 'img/user_logo.png' %}" alt="" ></div>
         {% endif%}
+        <div class="perfil__biography">
+            <div class="title">Bigrofía</div>
+            <div class="biography__contain">{{teacher.biography}}</div>
+        </div>
 
-        <div class="perfil__name">{{user.firts_name}} {{user.last_name}}</div>
-        <a href="{% url 'update_student' %}"><button class="button__secondary">Modificar Perfil</button></a>
-        <div class="title">Datos de Perfil</div>
+        <div class="perfil__name">{{user.username}} </div>
+        <a href="{% url 'update_teacher' %}"><button class="button__secondary">Modificar Perfil</button></a>
+
         <div class="perfil__datas">
-            <div class="perfil__data">Nombre/s : {{user.first_name}}</div>
+            <div class="title">Datos de Perfil</div>
+            <div class="perfil__data">Nombre(s) : {{user.first_name}}</div>
             <div class="perfil__data">Apellidos : {{user.last_name}}</div>
             <div class="perfil__data">Email : {{user.email}}</div>
             <div class="perfil__data">Biografia: {{teacher.biography}}</div>
         </div>
-        <div class="perfil__groups">
-            <table border="1">
-                <tr>
-                    <thead>grupo</thead>
-                    <thead>Maestro</thead>
-                </tr>
-                {% for group in groups %}
-                <tr>
-                    <td>{{group.name}}</td>
-                    <td>{{group.teacher}}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </div>
+       
     </section>
 {% endblock %}

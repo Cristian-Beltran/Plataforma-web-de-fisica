@@ -7,8 +7,9 @@
     {% block head_content %}{% endblock%}
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
-    <link rel="stylesheet" href="{% static 'css/tablet.css'%}" media="(min-width:500px)">
+    <link rel="stylesheet" href="{% static 'css/tablet.css'%}" media="(min-width:680px)">
     <link rel="stylesheet" href="{% static 'css/desktop.css'%}" media="(min-width:800px)">
+<script src="https://kit.fontawesome.com/71feef6635.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -18,5 +19,11 @@
         {% block container %}
         {% endblock %}
     </main>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $(".menu_bar").on('click',function(){
+            $("nav").toggle('slow');
+        });
+    </script>
 </body>
 </html>

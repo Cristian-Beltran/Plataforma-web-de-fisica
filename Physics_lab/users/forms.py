@@ -2,7 +2,7 @@
 # Django
 from django import forms
 # Model
-from users.models import Student
+from users.models import Student,Teacher,School
 from django.contrib.auth.models import User
 
 # User authenticate
@@ -49,3 +49,17 @@ class SignUpForm(forms.Form):
             self.add_error('username','El usuario ya existe')
 
         return cleaned_data
+
+class UpdateTeacherForm(forms.ModelForm):
+    """Update teacher form."""
+    class Meta:
+        model = Teacher
+        fields = ['picture','biography','schools']
+    schools = forms.ModelMultipleChoiceField(queryset=School.objects.all(),widget=forms.CheckboxSelectMultiple(attrs={'class':'input'}))
+    
+
+class UpdateStudentForm(forms.Form):
+    """Post model form."""
+    school = forms.CharField()
+    picture = forms.ImageField()
+ 

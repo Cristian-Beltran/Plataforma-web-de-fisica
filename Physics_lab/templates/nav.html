@@ -4,36 +4,35 @@
     <img src="{% static 'img/logo.png' %}" alt="logo Physics lab" class="logo">
     <div>Physics Lab</div>
 </div>
-<nav>
+
+<nav class="navigation" id="main-navigation">
     <ul>
         <li><a href="{% url 'index' %}">Home</a></li>
 
-        <li><a href="">Posts</a></li>
-<!--
-        <li><a href="">My Posts</a></li>
--->
+        <li><a href="{% url 'posts' %}">Posts</a></li>
         <li><a href="">Labs</a></li>
-<!--
-        <li><a href="">My Labs</a></li>
-        <li><a href="">Notes Labs</a></li>
--->
         <li><a href="">Simulate</a></li>
         {% if request.user.is_authenticated %}
-            <li><a href="{% url 'logout' %}">Log out</a></li>
             {% if request.user.teacher %}
+                <li><a href="">My Posts</a></li>
+                <li><a href="">My Labs</a></li>
                 {% if request.user.teacher.picture %} 
                     <li><a href="{% url 'perfil_teacher' %}"><img src="{{ request.user.teacher.picture.url }}" alt="Foto de perfil"  class="user__logo"></a></li>
                 {% else %} 
                     <li class="user__logo--sin-picture"><a href="{% url 'perfil_teacher' %}"><img src="{% static 'img/user_logo.png' %}" alt="Foto de perfil" class="user__logo"></a></li>
                 {% endif%}
             {% else %}
+
+                <li><a href="">Labs Notes</a></li>
                 {% if request.user.student.picture %}
                     <li ><a href="{% url 'perfil_student' %}"><img src="{{ request.user.student.picture.url }}" alt="Foto de perfil" class="user__logo"></a></li>
                 {% else %}
 
                     <li class="user__logo--sin-picture"><a href="{% url 'perfil_student' %}"><img src="{% static 'img/user_logo.png' %}" alt="" ></a></li>
                 {% endif%}
-            {% endif%}
+            {% endif %}
+            
+            <li><a href="{% url 'logout' %}">Log out</a></li>
         {% else %}
             <li><a href="{% url 'login' %}" class="nav__login">Log in</a></li>
             <li><a href="{% url 'signup'%}" class="nav__signup">Sign up</a></li>
@@ -42,3 +41,6 @@
 
     </ul>
 </nav>
+<div class="menu_bar">
+    <a class="bt-menu" href="#" ><span>Menu</span><i class="fas fa-bars"></i></a>
+</div>

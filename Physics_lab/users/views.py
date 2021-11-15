@@ -4,17 +4,17 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login,logout
-
 # Models
 from django.contrib.auth.models import User
 from users.models import Student,School
 from groups.models import Group
 # Exception
 from django.db.utils import IntegrityError
+# forms
+from users.forms import LoginForm, SignUpForm
+from users.forms import UpdateStudentForm,UpdateTeacherForm
 
 # Forms
-from users.forms import LoginForm, SignUpForm
-
 def login_view(request):
     """Login view."""
     if request.method == 'POST':
@@ -55,40 +55,57 @@ def signup_view(request):
     return render(request,'users/signup.html',{'form':form})
 
 
-
-def perfil_student_view(request):
-    """Profile view"""
-    user = request.user
-    student = request.user.student
-    groups = Group.objects.filter(students__pk=student.pk)
-    return render(request,'users/student.html',{'user':user,'student':student,'groups':groups})
-
-def perfil_teacher_view(request):
-    """Profile view"""
-    user = request.user
-    teacher = request.user.teacher
-    groups = Group.objects.filter(teacher=teacher.pk)
-    return render(request,'users/teacher.html',{'user':user,'teacher':teacher,'groups':groups})
-
-@login_required
-def update_student_view(request):
-    """Modify Profile view"""
-    user =request.user.student
-    if request.method == 'POST':
-        form = UpdateStudentForm(request.POST,request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect()
-
-@login_required()
-def update_teacher_view(request):
-    """Modify Profile view"""
-    user =request.user.teacher
-
-
-
 @login_required
 def logout_view(request):
     """Logout a user"""
     logout(request)
     return redirect('index')
+
+
+@login_required
+def perfil_student_view(request):
+    """Profile view"""
+    user = request.user
+    student = request.user.student
+    return render(request,'users/student.html',{'user':user,'student':student})
+
+@login_required
+def perfil_teacher_view(request):
+    """Profile view"""
+    user = request.user
+    teacher = request.user.teacher
+    return render(request,'users/teacher.html',{'user':user,'teacher':teacher})
+
+@login_required
+def update_student_view(request):
+    """Modify Profile view"""
+    user = request.user
+    student = request.user.student
+    schools = School.objects.all() 
+    if request.method == 'POST': 
+        form = UpdateStudentForm(request.POST,request.FILES)
+        if form.is_valid():
+            data = form.cleaned_data
+            student.picture = data['picture']
+            student.school = School.objects.get(pk=data['school'])
+            student.save()
+            return redirect('perfil_student')
+    else:
+        form = UpdateStudentForm()
+    return render(request,'users/update_student.html',{'user':user,'student':student,'form':form,'schools':schools})
+
+@login_required()
+def update_teacher_view(request):
+    """Modify Profile view"""
+    user = request.user
+    teacher = request.user.teacher
+
+    if request.method == 'POST':
+        form = UpdateTeacherForm(request.POST,request.FILES,instance=teacher)
+        if form.is_valid():
+            form.save()
+            return redirect('perfil_teacher')
+    else:
+        form = UpdateTeacherForm()
+
+    return render(request,'users/update_teacher.html',{'user':user,'teacher':teacher,'form':form})

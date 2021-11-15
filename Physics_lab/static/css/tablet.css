@@ -2,8 +2,23 @@
     display:none
 }
 
+header{
+    flex-direction: row;
+}
 header .logo__contain .logo {
     display:block;
 }
 
+.navigation{
+    position: static;
+    height:auto;
+    width: auto;
+    display: flex;
+}
+.navigation ul{
+    flex-direction: row;
+}
 
+.menu_bar{
+    display: none;
+}

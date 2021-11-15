@@ -6,6 +6,7 @@
     --white: #FFFFFF;
     --black: #000000;
     --white-light: #F2ECFF;
+    --white-hard: #aca6bb;
     --green-color: #00C897;
     --error: #ad1111;
     --sm: 1.6rem;
@@ -32,11 +33,12 @@ body {
 header {
     background-color: var(--blue-color);
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     color: var(--white-light);
-    padding: 0 2rem;
-    height: 8rem;
+    padding: 2rem 2rem;
+    min-height: 8rem;
 }
 
 ul {
@@ -53,17 +55,47 @@ a {
 ul li {
     list-style: none;
     margin-right: 2rem;
+    margin-bottom: 1rem;
 }
 
 li a {
     color: var(--white-light);
-    font-size: var(--md);
+    font-size: var(--sm);
     font-weight: 500;
 }
 
+.navigation{
+    display: flex;
+    align-content: flex-start;
+    display: none;
+}
+.navigation ul{
+    flex-direction: column;
+}
+.navigation li a {
+    color: var(--white-light);
+    font-size: var(--sm);
+    font-weight: 500;
+    text-align: left;
+    transition: all ease-in-out 250ms;
+}
+.navigation li a:hover{
+    color:var(--white-hard)
+}
+
+.bt-menu{
+    display:block;
+    color:var(--white-light);
+    font-size:var(--md)
+}
+.bt-menu span{
+    margin-right:1rem;
+}
 .logo__contain {
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-self: start;
 }
 
 .logo__contain div {
@@ -96,6 +128,7 @@ header .logo__contain .logo {
 }
 .user__logo--sin-picture img{
     width: 4rem;
+    height: 4rem
 }
 .user__logo{
     width:6rem;
@@ -280,4 +313,98 @@ main {
     font-size: var(--md);
     font-weight: 500;
     cursor: pointer;
+}
+
+
+/* Estilos perfiles */
+
+.perfil__contain{
+    display:grid;
+    justify-content:center;
+    align-items:center;
+    row-gap: 0;
+    column-gap: 2rem;
+    grid-template: 1fr 1fr 1fr/ 1fr 1fr;
+}
+.perfil__biography{
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+.biography__contain{
+    font-size: var(--sm);
+}
+.perfil__contain .user__logo{
+    width: 15rem;
+    height: 15rem;
+    grid-column: 1 / 2;
+    grid-row: 1/ 2;
+    justify-self: center;
+}
+.perfil__contain div img{
+    width:12rem;
+    height: 12rem;
+}
+
+.perfil__name{
+    font-size:var(--lg);
+    font-weight: 700;
+    color:var(--violet-color);
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+.perfil__contain a {
+    grid-column: 1/ 2;
+    grid-row: 2 / 4;
+}
+.perfil__datas{
+    grid-column: 2/ 3;
+    grid-row: 2 / 4;
+    font-size:var(--md);
+    font-weight: 500;
+    color:var(--black);
+}
+.perfil__data{
+    margin-bottom: 1rem;
+}
+
+
+/* List item */
+
+.list__item{
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.list__item .form__contain{
+    width:80%;
+    display:grid;
+    justify-content: space-evenly;
+    grid-template-columns: repeat(2,20rem);
+}
+.form__contain .form__group{
+    width: 100%;
+}
+.form__title{
+    align-self: center;
+    font-size: var(--lg);
+    font-weight: 700;
+    margin-bottom:2rem;
+    color: var(--violet-color);
+}
+
+.card__img{
+    align-self: center;
+    width: 14rem;
+    height: 14rem;
+    overflow: hidden;
+    grid-column: 1/2;
+    grid-row: 1/3;
+}
+.list__item .card__contain{
+    font-size: var(--sm);
+    font-weight:300;
+    grid-column: 2 / 3;
+    grid-row: 2/3;
 }

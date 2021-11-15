@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_content %}
+<title>Physics Lab New Post</title>
+{% endblock %}
+
+
+{% block container %}
+<section class="form__contain">
+    <img src="{% static 'img/logo.png' %}" alt="logo Physics lab" class="logo">
+    <div class="title">{{user.first_name}} {{user.last_name}}</div>
+        {% if request.user.student.picture %}
+            <li ><img src="{{ request.user.student.picture.url }}" alt="Foto de perfil" class="user__logo"></li>
+        {% else %}
+            <li class="user__logo--sin-picture user__logo"><img src="{% static 'img/user_logo.png' %}" alt="" ></li>
+        {% endif%}
+    <form action="{% url 'update_student' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form__group">
+            <label for="picture" class="label">Foto de perfil: </label>
+            <input type="file" class="input {% if form.picture.errors %} invalid {% endif%}"
+                id="picture" name="picture">
+            <div class="input__invalid">{% for error in form.picture.errors %}{{error}}{%endfor%}</div>
+        </div>
+        <div class="form__group">
+            <label for="school" class="label" >Colegio: </label>
+            <select name="school" id="school" class="input">
+                {% for school in schools %}
+                <option value="{{school.pk}}">{{school.name}}</option>
+                {% endfor%}
+            </select>
+            <div class="input__invalid">{% for error in form.school.errors %}{{error}}{%endfor%}</div>
+        </div>
+        
+        <input type="submit" value="Publicar" class="button__primary">
+    </form>
+</section>
+{% endblock %}
