@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Physics Lab Posts</title>
+{% endblock %}
+
+
+{% block container %}
+    <section class="list__item">
+        <div class="form__contain">
+            <div class="form__title">LABS</div>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form__group">
+                    <input type="text" class="input {% if form.title.errors %} invalid {% endif %}" placeholder="Titulo" id="title" name="title">
+                    <div class="input__invalid">{% for error in form.title.errors %}{{error}}{%endfor%}</div>
+                </div>
+                <div class="form__group">
+                    <select name="group" id="group" class="input">
+                        {% for group in groups %}
+                            <option value="{{group.pk}}">{{group.name}}</option>
+                        {% endfor %}
+                        
+                    </select>
+                    <div class="input__invalid">{% for error in form.group.errors %}{{error}}{%endfor%}</div>
+                </div>
+                <input type="submit" value="Buscar" class="button__secondary">
+            </form>
+
+        </div>
+        <div class="data__contain">
+            {% for lab in labs%}
+                <div class="data">
+                    <img src="{{lab.photo.url}}" alt="{{lab.title}}" class="card__img">
+                    <div class="card__title">{{lab.title}}</div>
+                    <div class="card__content">{{lab.contain|truncatechars:60}}
+                    <div class="card__teacher">{{lab.teacher}}</div>
+                    </div>
+                </div>
+            {% endfor%}
+        </div>
+    </section>
+
+{% endblock %}

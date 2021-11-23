@@ -83,12 +83,9 @@ def update_student_view(request):
     student = request.user.student
     schools = School.objects.all() 
     if request.method == 'POST': 
-        form = UpdateStudentForm(request.POST,request.FILES)
+        form = UpdateStudentForm(request.POST,request.FILES,instance=student)
         if form.is_valid():
-            data = form.cleaned_data
-            student.picture = data['picture']
-            student.school = School.objects.get(pk=data['school'])
-            student.save()
+            form.save()
             return redirect('perfil_student')
     else:
         form = UpdateStudentForm()

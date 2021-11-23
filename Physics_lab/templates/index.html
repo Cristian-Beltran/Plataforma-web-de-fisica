@@ -17,12 +17,12 @@
             <div class="card">
                 <img src="{% static 'img/Post.png' %}" alt="Posts" class="card__logo">
                 <div class="card__title">Posts de Física</div>
-                <button class="button__secondary">Ingresar</button>
+                <a href="{% url 'posts'%}"><button class="button__secondary">Ingresar</button></a>
             </div>
             <div class="card">
                 <img src="{% static 'img/Laboratorio.png' %}" alt="Laboratorio" class="card__logo">
                 <div class="card__title">Laboratorios de Física</div>
-                <button class="button__secondary">Ingresar</button>
+                <a href="{% url 'labs'%}"><button class="button__secondary">Ingresar</button></a>
             </div>
             <div class="card">
                 <img src="{% static 'img/Simulacion.png' %}" alt="Simulacion" class="card__logo">

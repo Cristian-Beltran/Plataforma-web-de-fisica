@@ -10,7 +10,7 @@
         <li><a href="{% url 'index' %}">Home</a></li>
 
         <li><a href="{% url 'posts' %}">Posts</a></li>
-        <li><a href="">Labs</a></li>
+        <li><a href="{% url 'labs' %}">Labs</a></li>
         <li><a href="">Simulate</a></li>
         {% if request.user.is_authenticated %}
             {% if request.user.teacher %}

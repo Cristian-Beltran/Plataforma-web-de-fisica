@@ -26,5 +26,8 @@ urlpatterns = [
     path('posts/create/',posts_views.create_post_view,name='create_post'),
     path('posts/list/',posts_views.list_post_view,name='posts'),
 
+    path('labs/list/',labs_views.list_lab_view,name='labs'),
+    path('labs/create/',labs_views.create_lab_view,name='create_lab'),
+
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

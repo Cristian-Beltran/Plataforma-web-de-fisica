@@ -17,12 +17,9 @@ class LoginForm(forms.Form):
         cleaned_data = super(LoginForm, self).clean()
         password = cleaned_data.get("password")
         username = cleaned_data.get("username")
-
-        if not User.objects.filter(username=username).exists():
-            self.add_error('username','El usuario no existe')
-            if not User.objects.filter(username=username,password=password).exists():
-                self.add_error('password','Contraseña incorrecta')
-        
+        user = authenticate(username=username, password=password);
+        if not user: 
+            self.add_error('password','Usuario o contraseña incorrecta')
         return cleaned_data
 
 
@@ -58,8 +55,9 @@ class UpdateTeacherForm(forms.ModelForm):
     schools = forms.ModelMultipleChoiceField(queryset=School.objects.all(),widget=forms.CheckboxSelectMultiple(attrs={'class':'input'}))
     
 
-class UpdateStudentForm(forms.Form):
+class UpdateStudentForm(forms.ModelForm):
     """Post model form."""
-    school = forms.CharField()
-    picture = forms.ImageField()
+    class Meta:
+        model = Student
+        fields = ['picture','school']
  
