@@ -34,3 +34,9 @@ def create_post_view(request):
     else:
         form = PostForm()
     return render(request,'posts/new.html',{'form':form,'teacher':request.user.teacher})
+
+@login_required
+def post_view(request,id):
+    user = request.user
+    post = Post.objects.get(id=id)
+    return render(request,'posts/post.html',{'post':post,'user':user})

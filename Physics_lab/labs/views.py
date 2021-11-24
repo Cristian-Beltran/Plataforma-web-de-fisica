@@ -20,10 +20,14 @@ def list_lab_view(request):
         groups = Group.objects.filter(students=request.user.student)
     else:
         groups = Group.objects.filter(teacher=request.user.teacher) 
-        
     form = FilterLabForm()
-
     return render(request,'labs/list.html',{'labs':labs,'groups':groups,'form':form})
+
+@login_required
+def lab_view(request,id):
+    user = request.user
+    lab = Lab.objects.get(id=id)
+    return render(request,'labs/lab.html',{'lab':lab,'user':user})
 
 @login_required
 def create_lab_view(request):

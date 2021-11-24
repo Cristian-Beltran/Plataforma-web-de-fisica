@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Physics Lab </title>
+{% endblock %}
+
+
+{% block container %}
+{{lab.title}}
+{{lab.contain}}
+<img src="{{lab.photo.url}}" alt="{{lab.title}}" >
+{% endblock %}

@@ -29,10 +29,10 @@
 
         </div>
         <div class="data__contain">
-            {% for lab in labs%}
+            {% for lab in labs %}
                 <div class="data">
                     <img src="{{lab.photo.url}}" alt="{{lab.title}}" class="card__img">
-                    <div class="card__title">{{lab.title}}</div>
+                    <a href="{% url 'lab' id=lab.id %}" class="card__title">{{lab.title}}</a>
                     <div class="card__content">{{lab.contain|truncatechars:60}}
                     <div class="card__teacher">{{lab.teacher}}</div>
                     </div>

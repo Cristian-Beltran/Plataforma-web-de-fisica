@@ -32,7 +32,7 @@
             {% for post in posts%}
                 <div class="data">
                     <img src="{{post.photo.url}}" alt="{{post.title}}" class="card__img">
-                    <div class="card__title">{{post.title}}</div>
+                    <a href="{% url 'post' id=post.id %}" class="card__title">{{post.title}}</a>
                     <div class="card__content">{{post.contain|truncatechars:60}}
                     <div class="card__teacher">{{post.teacher}}</div>
                     </div>
