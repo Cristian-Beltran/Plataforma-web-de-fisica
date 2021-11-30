@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Physics Lab Posts</title>
+{% endblock %}
+
+
+{% block container %}
+    <section class="list__item">
+        <div class="form__contain">
+            <div class="form__title">Simulations</div>
+        </div>
+        <div class="data__contain">
+            {% for simulation in simulations %}
+                <div class="data">
+                    <img src="{{simulation.photo.url}}" alt="{{simulation.title}}" class="card__img">
+                    <a href="{% url 'simulation' id=simulation.id%}" class="card__title">{{simulation.title}}</a>
+                    <div class="card__content">{{simulation.contain|truncatechars:60}}
+                    </div>
+                </div>
+            {% endfor%}
+        </div>
+    </section>
+
+{% endblock %}

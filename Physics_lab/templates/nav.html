@@ -11,7 +11,7 @@
 
         <li><a href="{% url 'posts' %}">Posts</a></li>
         <li><a href="{% url 'labs' %}">Labs</a></li>
-        <li><a href="">Simulate</a></li>
+        <li><a href="{% url 'simulations' %}">Simulate</a></li>
         {% if request.user.is_authenticated %}
             {% if request.user.teacher %}
                 <li><a href="">My Posts</a></li>

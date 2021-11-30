@@ -63,6 +63,11 @@ li a {
   font-weight: 500;
 }
 
+canvas {
+    border: solid 1px #ccc;
+    margin: 20px;
+}
+
 .navigation {
   display: flex;
   align-content: flex-start;

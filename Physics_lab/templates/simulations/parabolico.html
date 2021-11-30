@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Physics Lab </title>
+{% endblock %}
+
+
+{% block container %}
+    <div class="title">{{ simulation.title }}</div>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <form>
+        <input type="number" class="input" id="grados" placeholder="Ingrese los grados de inclinacion">
+        <input type="number" class="input" id="vo" placeholder="Ingrese la velocidad ">
+        <button type="button" class="button__primary" onclick="parabolico()">Simular</button>
+    </form>
+{% endblock %}

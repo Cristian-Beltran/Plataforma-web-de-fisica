@@ -31,5 +31,8 @@ urlpatterns = [
     path('labs/create/',labs_views.create_lab_view,name='create_lab'),
     path('labs/post/<str:id>/',labs_views.lab_view,name='lab'),
 
+    path('simulations/list/',simulations_views.list_simulation_view,name='simulations'),
+    path('simulations/<str:id>/',simulations_views.simulation_view,name='simulation'),
+
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+<title>Physics Lab </title>
+{% endblock %}
+
+
+{% block container %}
+<div class="title">{{simulation.title}}</div>
+<canvas id="canvas" width="500" height="500"></canvas>
+<form action="">
+
+    <input type="number" class="input" id="vx" placeholder="Ingrese la velocidad">
+    <input type="number" class="input" id="dt" placeholder="Ingrese el tiempo">
+    <button type="button" class="button__primary" onclick="mru()">Simular</button>
+</form>
+{% endblock %}
