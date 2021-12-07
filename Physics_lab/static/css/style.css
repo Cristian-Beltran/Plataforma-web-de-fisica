@@ -65,8 +65,21 @@ li a {
 
 canvas {
     border: solid 1px #ccc;
-    margin: 20px;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
 }
+canvas img{
+  border : 1px solid #ccc;
+}
+.mru {
+  background-image: url("/static/img/sprites/fondo-mru.png");
+  background-repeat: no-repeat;
+}
+.parabolic {
+  background-image: url("/static/img/sprites/fondo-parabolic.jpg");
+  background-repeat: no-repeat;
+}
+
 
 .navigation {
   display: flex;

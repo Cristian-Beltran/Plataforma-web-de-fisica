@@ -1,16 +1,29 @@
 {% extends 'base.html' %}
 
+{% load static %}
 {% block head_content %}
-    <title>Physics Lab </title>
+<title>Physics Lab </title>
 {% endblock %}
 
 
 {% block container %}
+<section class="form__contain">
     <div class="title">{{ simulation.title }}</div>
-    <canvas id="canvas" width="500" height="500"></canvas>
+    <canvas id="canvas" width="500" height="400" class="parabolic">
+        <img src="{% static 'img/sprites/rana.png' %}" id="rana">
+        <img src="{% static 'img/sprites/tree.png' %}" id="tree">
+    </canvas>
     <form>
-        <input type="number" class="input" id="grados" placeholder="Ingrese los grados de inclinacion">
-        <input type="number" class="input" id="vo" placeholder="Ingrese la velocidad ">
-        <button type="button" class="button__primary" onclick="parabolico()">Simular</button>
+        <div class="form__group">
+            <input type="number" class="input" id="h" placeholder="Ingrese la altura">
+        </div>
+        <div class="form__group">
+            <input type="number" class="input" id="grados" placeholder="Ingrese los grados de inclinacion">
+        </div>
+        <div class="form__group">
+            <input type="number" class="input" id="vo" placeholder="Ingrese la velocidad ">
+        </div>
+        <button type="button" class="button__primary" onclick="parabolic()">Simular</button>
     </form>
+</section>
 {% endblock %}
