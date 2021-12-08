@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 
 {% block head_content %}
-    <title>Physics Lab </title>
+<title>Physics Lab </title>
 {% endblock %}
 
 
 {% block container %}
-{{post.title}}
-{{post.contain}}
-<img src="{{post.photo.url}}" alt="{{post.title}}" >
+<section class="contain">
+    <div class="title">
+        {{post.title}}
+    </div>
+    <img src="{{post.photo.url}}" alt="{{post.title}}">
+    <div class="content">
+        {{post.contain}}
+    </div>
+</section>
 {% endblock %}

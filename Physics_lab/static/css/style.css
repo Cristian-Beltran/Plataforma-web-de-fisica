@@ -441,3 +441,20 @@ main {
   grid-row: 2/3;
   justify-self: left;
 }
+
+.contain {
+  margin-top: 4rem;
+  width: 80%;
+  display:grid;
+  place-items: center;
+}
+.contain img{
+  margin-top: 4rem;
+  width: 60%;
+  min-width: 45rem;
+}
+.content{
+  margin-top: 4rem;
+  font-size: var(--sm);
+  margin-bottom: 4rem;
+}
