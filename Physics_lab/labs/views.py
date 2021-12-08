@@ -12,7 +12,7 @@ from groups.models import Group
 
 
 
-@login_required
+@login_required(login_url='/')
 def list_lab_view(request):
     user = request.user
     labs = Lab.objects.filter(visible=True).filter(public=True).order_by('created_at') 
@@ -23,13 +23,13 @@ def list_lab_view(request):
     form = FilterLabForm()
     return render(request,'labs/list.html',{'labs':labs,'groups':groups,'form':form})
 
-@login_required
+@login_required(login_url='/')
 def lab_view(request,id):
     user = request.user
     lab = Lab.objects.get(id=id)
     return render(request,'labs/lab.html',{'lab':lab,'user':user})
 
-@login_required
+@login_required(login_url='/')
 def create_lab_view(request):
     user = request.user
     """Create new post"""

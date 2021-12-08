@@ -55,28 +55,28 @@ def signup_view(request):
     return render(request,'users/signup.html',{'form':form})
 
 
-@login_required
+@login_required(login_url='/')
 def logout_view(request):
     """Logout a user"""
     logout(request)
     return redirect('index')
 
 
-@login_required
+@login_required(login_url='/')
 def perfil_student_view(request):
     """Profile view"""
     user = request.user
     student = request.user.student
     return render(request,'users/student.html',{'user':user,'student':student})
 
-@login_required
+@login_required(login_url='/')
 def perfil_teacher_view(request):
     """Profile view"""
     user = request.user
     teacher = request.user.teacher
     return render(request,'users/teacher.html',{'user':user,'teacher':teacher})
 
-@login_required
+@login_required(login_url='/')
 def update_student_view(request):
     """Modify Profile view"""
     user = request.user
@@ -91,7 +91,7 @@ def update_student_view(request):
         form = UpdateStudentForm()
     return render(request,'users/update_student.html',{'user':user,'student':student,'form':form,'schools':schools})
 
-@login_required()
+@login_required(login_url='/')
 def update_teacher_view(request):
     """Modify Profile view"""
     user = request.user

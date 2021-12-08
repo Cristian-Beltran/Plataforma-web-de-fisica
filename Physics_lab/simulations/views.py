@@ -5,12 +5,12 @@ from django.shortcuts import render,redirect
 from simulations.models import Simulation 
 
 
-@login_required
+@login_required(login_url='/')
 def list_simulation_view(request):
     simulations = Simulation.objects.all().order_by('created_at') 
     return render(request,'simulations/list.html',{'simulations':simulations})
 
-@login_required
+@login_required(login_url='/')
 def simulation_view(request,id):
     simulation = Simulation.objects.get(id=id)
     url =  {
